@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- demo1快速入门  ***************************************** -->
+	<!-- 通过一个<bean>标签设置类的信息，通过id属性为类起个标识 -->
+	<!-- <bean id="userService" class="cn.itcast.spring3.demo1.HelloServiceImpl">
+		使用<property>标签注入属性
+		<property name="info" value="依赖注入演示"/>
+	</bean> -->
+	<!-- demo1快速入门  ***************************************** -->
+	
+	<!-- demo2 Bean的实例化   ****************************************-->	
+	<!-- 默认情况下使用的是无参构造方法 -->
+	<!-- <bean id="bean1" class="cn.itcast.spring3.demo2.Bean1"></bean> -->
+	
+	<!-- 第二种使用静态工厂实例化 -->
+<!-- 	<bean id="bean2" class="cn.itcast.spring3.demo2.Bean2Facotory" factory-method="getBean2"></bean>
+	 -->
+	<!-- 第三种使用实例工厂实例化 -->
+<!-- 	<bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3"></bean>
+	<bean id="bean3Factory" class="cn.itcast.spring3.demo2.Bean3Factory"></bean>
+	 -->
+	<!-- demo2 Bean的实例化   ****************************************-->	
+	
+	<!-- demo3Bean的作用范围×××××××××××××××××××××××××××××××××××××××× -->
+	
+<!-- 	<bean id="customer" class="cn.itcast.spring3.demo3.Customer" scope="prototype"></bean> -->
+	<bean id="product" class="cn.itcast.spring3.demo3.Product" init-method="setup" destroy-method="theardown"></bean>
+	<!-- demo3Bean的作用范围×××××××××××××××××××××××××××××××××××××××× -->
+	<!-- demo4Bean的生命周期 -->
+	<bean id="customerservice" class="cn.itcast.spring3.demo4.CustomerServiceImpl" init-method="setup" destroy-method="teardown">
+		<property name="name" value="itcast"></property>
+	</bean>
+	
+	<bean class="cn.itcast.spring3.demo4.MyBeanPostProcessor"></bean>
+	
+	
+	<!-- demo6Bean的属性注入*********************************** -->
+	<bean id="collectionBean" class="cn.itcast.spring3.demo6.CollectionBean">
+		<!-- 注入List集合 -->
+		<property name="list">
+			<list>
+				<value>吕氏</value>
+				<value>春秋</value>
+			</list>
+		</property>
+		
+		<!-- 注入set集合 -->
+		<property name="set">
+			<set>
+				<value>第二</value>
+				<value>测试</value>
+			</set>
+		</property>
+		
+		<!-- 注入map集合 -->
+		<property name="map">
+			<map>
+				<entry key="第一" value="111"></entry>
+				<entry key="第二" value="222"></entry>
+			</map>
+		</property>
+		
+		<property name="properties">
+			<props>
+				<prop key="username">admin</prop>
+				<prop key="password">root</prop>
+			</props>
+		</property>
+
+	</bean>
+</beans>
